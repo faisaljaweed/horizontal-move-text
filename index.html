@@ -1,0 +1,79 @@
+
+    <style>
+      /* Root styling */
+      :root {
+        font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+        line-height: 1.5;
+        font-weight: 400;
+        color-scheme: light dark;
+        background-color: #242424;
+        color: rgba(255, 255, 255, 0.87);
+      }
+
+      /* Basic styling for body */
+      body {
+        margin: 0;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      /* Container for the slider */
+      .slider-container {
+        width: 100%;
+        overflow: hidden;
+        white-space: nowrap;
+        position: relative;
+        padding: 20px 0;
+      }
+
+      /* Track for scrolling text */
+      .slider-track {
+        display: flex;
+        animation: slide 15s linear infinite;
+      }
+
+      /* Styling for each piece of text */
+      .slider-text {
+        flex-shrink: 0;
+        padding: 0 20px;
+        font-size: 24px;
+      }
+
+      /* Keyframes for sliding animation */
+      @keyframes slide {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      /* Light color scheme */
+      @media (prefers-color-scheme: light) {
+        :root {
+          color: #213547;
+          background-color: #ffffff;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slider-container">
+      <div class="slider-track" id="sliderTrack"></div>
+    </div>
+
+    <script>
+      const text = "Hello World";
+      const repetitions = 10; // Number of times to repeat the text
+
+      // Generate the text elements dynamically
+      const track = `
+      ${Array(repetitions).fill(`<p class="slider-text">${text}</p>`).join("")}
+      ${Array(repetitions).fill(`<p class="slider-text">${text}</p>`).join("")}
+    `;
+
+      // Insert the generated text into the slider track
+      document.getElementById("sliderTrack").innerHTML = track;
+    </script>
+
